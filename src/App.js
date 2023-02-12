@@ -1,9 +1,10 @@
+import SearchBox from './components/search-input/search-box.component';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>React Entry Point</h1>
+      <SearchBox />
     </div>
   );
 }
