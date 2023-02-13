@@ -67,15 +67,27 @@ class App extends Component {
         speed,
       },
       name: city,
+      sys: {
+        country,
+      },
     } = weatherObj;
     return (
       <div className="App">
-        <input onChange={handleChange} />
+        <input
+          onChange={handleChange}
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              handleClick();
+            }
+          }}
+        />
         <AiOutlineSearch onClick={handleClick} />
         <p>
           City:
           {' '}
           {city}
+          {' '}
+          {country}
         </p>
         <p>
           Weather:
