@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import SeachInput from './components/search-input/search-input.component';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       cityName: '',
       weatherObj: '',
@@ -73,15 +73,7 @@ class App extends Component {
     } = weatherObj;
     return (
       <div className="App">
-        <input
-          onChange={handleChange}
-          onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-              handleClick();
-            }
-          }}
-        />
-        <AiOutlineSearch onClick={handleClick} />
+        <SeachInput onChange={handleChange} onClick={handleClick} />
         <p>
           City:
           {' '}
