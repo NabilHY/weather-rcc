@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import SeachInput from './components/search-input/search-input.component';
+import WeatherInfo from './components/weather-info/weather-info.component';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       cityName: '',
       weatherObj: '',
@@ -53,82 +54,10 @@ class App extends Component {
       return <p>...loading</p>;
     }
 
-    const {
-      weather: [{ description: weatherDescription }],
-      main: {
-        temp: temperature,
-        feels_like: feelsLike,
-        temp_min: tempMin,
-        temp_max: tempMax,
-        pressure,
-        humidity,
-      },
-      wind: {
-        speed,
-      },
-      name: city,
-      sys: {
-        country,
-      },
-    } = weatherObj;
     return (
       <div className="App">
-        <input
-          onChange={handleChange}
-          onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-              handleClick();
-            }
-          }}
-        />
-        <AiOutlineSearch onClick={handleClick} />
-        <p>
-          City:
-          {' '}
-          {city}
-          {' '}
-          {country}
-        </p>
-        <p>
-          Weather:
-          {' '}
-          {weatherDescription}
-        </p>
-        <p>
-          Temperature:
-          {' '}
-          {temperature}
-        </p>
-        <p>
-          Feels like:
-          {' '}
-          {feelsLike}
-        </p>
-        <p>
-          Minimum temperature:
-          {' '}
-          {tempMin}
-        </p>
-        <p>
-          Maximum temperature:
-          {' '}
-          {tempMax}
-        </p>
-        <p>
-          Wind speed:
-          {' '}
-          {speed}
-        </p>
-        <p>
-          Pressure:
-          {' '}
-          {pressure}
-        </p>
-        <p>
-          Humidity:
-          {' '}
-          {humidity}
-        </p>
+        <SeachInput onChange={handleChange} onClick={handleClick} />
+        <WeatherInfo weatherObj={weatherObj} />
       </div>
     );
   }
